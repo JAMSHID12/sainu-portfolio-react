@@ -25,8 +25,8 @@ export default function Testimonial() {
             <h2>{currentIndex}</h2>
             <section class="section awards" id="awards">
                 <div class="container text-center">
-                    <p class="section-subtitle">What I Achieve ?</p>
-                    <h6 class="section-title mb-4">Awards</h6>
+                    <p class="section-subtitle">What Think Colleague About Me ?</p>
+                    <h6 class="section-title mb-4">Testimonial</h6>
                     <div className='row testimonial-card '>
                         <div className='col-md-5 col-sm-12 testimonial-section'>
                             <div className="testimonial-image">
