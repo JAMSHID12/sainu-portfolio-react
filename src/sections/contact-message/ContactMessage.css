@@ -1,0 +1,15 @@
+.zoom-section {
+    transition: transform 0.5s ease-in-out;
+    transform-origin: center center;
+}
+
+.zoom-section.zoomed {
+    transform: scale(1.2);
+    /* You can adjust the scale factor as needed */
+}
+
+.contact-me{
+    padding: 40px 0px !important;
+    background-color: #695aa6 !important;
+    font-family: 'Times New Roman',;
+}

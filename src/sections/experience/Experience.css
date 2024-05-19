@@ -1,0 +1,57 @@
+.c-stepper__item:before {
+    --size: 1rem;
+    content: "";
+    position: relative;
+    z-index: 1;
+    flex: 0 0 var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background-color: #60159B;
+}
+
+.c-stepper__item {
+    position: relative;
+    display: flex;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    width: 100%;
+}
+
+.c-stepper__item:not(:last-child):after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(0.45rem);
+    width: 2px;
+    background-color: #e0e0e0;
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -10px;
+}
+
+.content1, .content2 {
+    width: 210px;
+    height: 50px;
+    
+    font-weight: 700;
+    
+}
+.content1{
+    text-align: left;
+    font-size: 19px;
+    color: #60159B;
+}
+.content2 {
+    text-align: right;
+    font-size: 18px;
+}
+.experience_header p{
+    text-align: left;
+    font-size: 17px;
+    font-weight: 600;
+}

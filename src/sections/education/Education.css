@@ -1,0 +1,31 @@
+.education_sub_header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -10px;
+}
+
+.cource, .year {  
+    font-weight: 700;   
+}
+.cource{
+    text-align: left;
+    font-size: 18px;
+    color: #60159B;
+}
+.year {
+    text-align: right;
+    font-size: 18px;
+
+}
+
+.education_header h6{
+    font-size: 17px;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.education_header p{
+    text-align: left;
+    font-size: 16px;
+}

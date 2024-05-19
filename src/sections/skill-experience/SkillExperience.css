@@ -1,0 +1,69 @@
+.skill-section{
+    text-align: left;
+}
+.skill-header{
+    font-size: calc(12px + (35 - 20) * ((100vw - 300px) / (1300 - 300)));
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+.barWrapper {
+    font-weight: 600;
+    font-size: 19px;
+    color: #60159B;
+}
+
+
+.single-progress-txt {
+    display: flex;
+   
+}
+
+.single-progress-txt h3 {
+    width: 10%;
+    color: #a606c3;
+    position: relative;
+    top: 6px;
+    left: 20px;
+    font-size: 18px;
+}
+
+.progress {
+    border-radius: 3px;
+    overflow: hidden;
+    background: #e6ecf3;
+    height: 8px;
+    margin-top: 15px;
+    width: 85%;
+    margin-bottom: 37px;
+}
+
+.percent {
+    width: 92%;
+    height: 100%;
+    background-color: #60159B;
+    border-radius: 5px;
+    transition: width 1s ease-in-out;
+   
+}
+
+.button-div {
+    display: flex;
+    align-items: left;
+    margin-bottom: 45px;
+    margin-left: 45px;
+}
+
+.education-section .btn {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 16px;
+}
+
+@media (max-width: 720px) {
+    .button-div {
+        margin-top: 50px;
+        margin-left: 0;
+    }
+}

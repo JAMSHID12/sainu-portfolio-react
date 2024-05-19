@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Between Paragraphs and Unordered Lists</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Resetting default margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Styling the footer */
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    p {
+      margin: 0;
+      /* Reset margin for paragraphs */
+    }
+
+    /* Unordered list styles */
+    ul {
+      margin: 0;
+      /* Reset margin for unordered lists */
+      padding: 0;
+      /* Reset padding for unordered lists */
+      list-style: none;
+      /* Remove default list styles */
+    }
+
+    /* List item styles */
+    li {
+      margin-bottom: 5px;
+      /* Add space between list items */
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      /* Add space between elements */
+      align-items: center;
+    }
+
+    /* Styling the social links */
+    .social-links {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .social-links li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 24px;
+    }
+
+    /* Adjusting space between paragraphs and unordered lists */
+    p {
+      margin-bottom: 20px;
+    }
+
+    ul {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <footer class="footer">
+    <div class="container">
+      <div class='content'>
+        <p>© 2024 Your Company</p>
+        <ul class="social-links">
+          <li><a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+
+</html>

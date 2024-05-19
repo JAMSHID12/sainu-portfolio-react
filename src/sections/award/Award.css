@@ -1,0 +1,10 @@
+.award-card {
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .award-card .award-card-img {
+    width: 100%;
+  }
+  

@@ -1,0 +1,12 @@
+.img-item {
+    margin: 2px;
+}
+
+.img-item img {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.clients {
+    margin-top: 140px;
+}

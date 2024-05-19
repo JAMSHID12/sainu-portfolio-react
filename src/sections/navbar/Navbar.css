@@ -1,0 +1,17 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 15px 40px;
+}
+
+.navbar-logo {
+    flex: 1;
+    /* Logo takes up remaining space */
+}
+
+.logo-img {
+    height: 60px;
+    
+}

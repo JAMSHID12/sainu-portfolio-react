@@ -1,0 +1,105 @@
+.contact{
+    padding-top: 50px;
+}
+
+.right-content{
+    margin-top: 50px;
+    
+}
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    
+}
+.form-group.input-row {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+.form-group.input-row .form-data {
+    flex: 1;
+    margin-right: 20px;
+}
+.form-group.input-row .form-data:last-child {
+    margin-right: 0;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    box-sizing: border-box;
+    transition: border-bottom-color 0.3s ease;
+}
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-bottom-color: #007bff;
+}
+
+.left-content{
+    text-align: left;
+    padding: 28px;
+    background: linear-gradient(to right, #60159B, #E2038B);
+    border-radius: 5%;
+    color: #ffffff;
+}
+
+.left-heading {
+    font-size: calc(13px + (46 - 20) * ((100vw - 300px) / (1300 - 300)));
+    font-weight: 500;
+}
+.contact-details p{
+  margin-top: 16px;
+  height: 12px;
+}
+
+.contact-details .email-id{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.contact-details .phone-no{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.address-form h5{
+    margin-top: 32px;
+    font-size: calc(13px + (31 - 20) * ((100vw - 300px) / (1300 - 300)));
+}
+
+.form-icons{
+    padding-top: 10px;
+    font-size: calc(13px + (26 - 20) * ((100vw - 300px) / (1300 - 300)));
+    font-weight: 500;
+}
+
+.form-icons a{
+    color: #ffffff;
+    margin-right: 16px;
+    font-size: 22px;
+}
+
+.address-form{
+    font-size: calc(13px + (24 - 20) * ((100vw - 300px) / (1300 - 300)));
+}
+.send-messagebtn{
+    background-color: #60159B;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 80px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    float: right;
+}
+
+@media (max-width: 767.98px) {
+    .send-messagebtn {
+        margin-top: 20px;
+    }
+}
