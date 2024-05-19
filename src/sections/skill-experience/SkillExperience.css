@@ -61,9 +61,13 @@
     border-radius: 16px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 760px) {
     .button-div {
         margin-top: 50px;
         margin-left: 0;
+    }
+
+    .skill-header{
+        font-size: calc(26px + (32 - 10) * ((100vw - 300px) / (1300 - 300)));
     }
 }
