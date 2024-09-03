@@ -9,7 +9,7 @@ export default function Footer() {
                 <footer class="footer">
                     <div class="container">
                         <div class='content'>
-                            <p>© 2024 sainuk</p>
+                            <p>© 2024 sainuk, desgined by  <a href='https://jamshidct.me/' class="link">jamshid ct</a> </p>
                             <ul class="social-links">
                                 <li><a href="https://www.linkedin.com/in/sainu123" class="link"><i
                                     class="fab fa-brands fa-linkedin-in"></i></a></li>
