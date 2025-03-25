@@ -126,9 +126,9 @@ export const skills = [
 export const experience = [
     {
         id: 1,
-        position: "User Experience Lead",
+        position: "Freelance LEAD UX/UI DESIGNER",
         year: "Aug 2022 - Present",
-        company: "Optum Global Solutions International B.V., Bengaluru", 
+        company: "Sainu_uxdesign, Kerala", 
 
     },
     {
