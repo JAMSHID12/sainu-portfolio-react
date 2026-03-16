@@ -200,12 +200,11 @@ export const awards = [
     },
 ]
 
-
 export const testimonial = [
     {
         id: 1,
         name : "Sonal Mehra",
-        position: "Co-founder tawgl",
+        position: "Co-founder tawgl® | Interview Intelligence | Data-Driven Hiring | Championing Candidate Experience & Employer Branding",
         path: sonalmehra,
         linkedin: "https://www.linkedin.com/in/sonal-mehra-3744a15",
         about: "I've had the pleasure of working with Sainu as our freelance UI/UX designer, and I can confidently say he’s been a fantastic collaborator. He’s incredibly detail-oriented, often catching things the rest of us might overlook, and his ability to connect the dots across projects—even after gaps in time—is remarkable. One of the things I value most is his willingness to speak up and share his opinions. That openness leads to stronger discussions, better decisions, and ultimately, better outcomes. Working with him has been both productive and enjoyable, and I’m glad to have him on board.",
