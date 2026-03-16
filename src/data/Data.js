@@ -17,6 +17,7 @@ import award_3 from '../assets/images/awards/aw-3.png'
 import award_4 from '../assets/images/awards/aw-4.png'
 
 import kartik from '../assets/images/testmonial/kartik.png'
+import sonalmehra from '../assets/images/testmonial/sonalmehra.png'
 import pooja from '../assets/images/testmonial/pooja.png'
 import jayakrishnan from '../assets/images/testmonial/jayakrishnan.png'
 import fredaric from '../assets/images/testmonial/fredaric.png'
@@ -126,9 +127,9 @@ export const skills = [
 export const experience = [
     {
         id: 1,
-        position: "Freelance LEAD UX/UI DESIGNER",
+        position: "User Experience Lead",
         year: "Aug 2022 - Present",
-        company: "Sainu_uxdesign, Kerala", 
+        company: "Optum , Bengaluru", 
 
     },
     {
@@ -199,47 +200,62 @@ export const awards = [
     },
 ]
 
+
 export const testimonial = [
     {
         id: 1,
-        name : "Kartik Puttaiah", 
-        position: "Entrepreneur",
-        path: kartik,
-        about: "I am greatly impressed and inspired by Sainudheen's professionalism and creativity. He takes complete ownership of the projects and drives the projects with sheer determination. He goes into great lengths to understand the business and user perspectives, which reflects in his UI and UX designs. His business acumen is complemented by his creativity, He activity contributes to the team with his valuable ideas and suggestions, making him an invaluable asset to the company!.",
+        name : "Sonal Mehra",
+        position: "Co-founder tawgl",
+        path: sonalmehra,
+        linkedin: "https://www.linkedin.com/in/sonal-mehra-3744a15",
+        about: "I've had the pleasure of working with Sainu as our freelance UI/UX designer, and I can confidently say he’s been a fantastic collaborator. He’s incredibly detail-oriented, often catching things the rest of us might overlook, and his ability to connect the dots across projects—even after gaps in time—is remarkable. One of the things I value most is his willingness to speak up and share his opinions. That openness leads to stronger discussions, better decisions, and ultimately, better outcomes. Working with him has been both productive and enjoyable, and I’m glad to have him on board.",
     },
     {
         id: 2,
-        name : "Pooja Haridas", 
-        position: "UX/UI Designer",
-        path: pooja,
-        about: "I had a chance to work with Sainudheen at the starting of my UX career journey.His approach to solving a problem diving deep into the complexities is highly commendable.He would always come up with multiple intuitive solutions for a single problem which used to be a great source to learn and understand.Sainudheen used to mentor and suggest ways in case of difficult tasks.A go to person for UX doubts. I highly recommend Sainudheen.",
+        name : "Kartik Puttaiah",
+        position: "Entrepreneur",
+        path: kartik,
+        linkedin: "https://www.linkedin.com/in/kartikputtaiah/",
+        about: "I am greatly impressed and inspired by Sainudheen's professionalism and creativity. He takes complete ownership of the projects and drives the projects with sheer determination. He goes into great lengths to understand the business and user perspectives, which reflects in his UI and UX designs. His business acumen is complemented by his creativity, He activity contributes to the team with his valuable ideas and suggestions, making him an invaluable asset to the company!.",
     },
     {
         id: 3,
-        name : "Jayakrishnan Krishnakumar", 
-        position: "UX Manager",
-        path: jayakrishnan,
-        about: "Sainu is very passionate in what he does. He is very Creative and Proactive in his field. Knowledge in UI and UX makes him one level above. His ideas can bring good changes to a product.",
+        name : "Pooja Haridas",
+        position: "UX/UI Designer",
+        path: pooja,
+        linkedin: "https://www.linkedin.com/in/pooja-haridas-86540228/",
+        about: "I had a chance to work with Sainudheen at the starting of my UX career journey.His approach to solving a problem diving deep into the complexities is highly commendable.He would always come up with multiple intuitive solutions for a single problem which used to be a great source to learn and understand.Sainudheen used to mentor and suggest ways in case of difficult tasks.A go to person for UX doubts. I highly recommend Sainudheen.",
     },
     {
         id: 4,
-        name : "Fredaric Mathew Lal", 
-        position: "UX Lead @ Plansource | Previously with Deloitte, Yokogawa and a bunch of startups",
-        path: fredaric,
-        about: "January 19, 2024, Fredaric worked with sainu on the same teamJanuary 19, 2024, Fredaric worked with sainu on the same team Worked with Sainu, in Yokogawa for a brief period of time. He was well versed in sketch and even though our industry was a bit unique, he was able to pick up the specifics fairly quickly.He is also a really social person and would gel into any team soon enough.",
+        name : "Jayakrishnan Krishnakumar",
+        position: "UX Manager",
+        path: jayakrishnan,
+        linkedin: "https://www.linkedin.com/in/jayakrishnan-krishnakumar-314a6735/",
+        about: "Sainu is very passionate in what he does. He is very Creative and Proactive in his field. Knowledge in UI and UX makes him one level above. His ideas can bring good changes to a product.",
     },
     {
         id: 5,
-        name : "Prosenjit Das", 
-        position: "UX Design Leader, Strategist, Consultant",
-        path: prosenjith,
-        about: "I worked closely with Sainu. He is very energetic, hard-working and goal oriented individual. He has good aesthetics and eye on details. He love to face new challenges and opportunities. He could be a great asset to any organization.",
+        name : "Fredaric Mathew Lal",
+        position: "UX Lead @ Plansource | Previously with Deloitte, Yokogawa and a bunch of startups",
+        path: fredaric,
+        linkedin: "https://www.linkedin.com/in/fredarico/",
+        about: "January 19, 2024, Fredaric worked with sainu on the same teamJanuary 19, 2024, Fredaric worked with sainu on the same team Worked with Sainu, in Yokogawa for a brief period of time. He was well versed in sketch and even though our industry was a bit unique, he was able to pick up the specifics fairly quickly.He is also a really social person and would gel into any team soon enough.",
     },
     {
         id: 6,
-        name : "Parag Sarma", 
+        name : "Prosenjit Das",
+        position: "UX Design Leader, Strategist, Consultant",
+        path: prosenjith,
+        linkedin: "https://www.linkedin.com/in/prosenjit-das-a3ab3928/",
+        about: "I worked closely with Sainu. He is very energetic, hard-working and goal oriented individual. He has good aesthetics and eye on details. He love to face new challenges and opportunities. He could be a great asset to any organization.",
+    },
+    {
+        id: 7,
+        name : "Parag Sarma",
         position: "UX Design Evangelist, Design Educator, Contemporary Media Artist",
         path: parag,
+        linkedin: "https://www.linkedin.com/in/paragsarma/",
         about: "During my interaction with Sainu in Yokogawa, I personally unearthed many creative and meaningful approaches toward Design problems, he is the quick and most dedicated person that I have ever met in my professional journey. His input and suggestions have always brought productive outcomes in our collaborative projects. I wish him all the best for his future.",
     },
 ]
