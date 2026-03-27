@@ -53,17 +53,54 @@ h1 i{font-style:italic;color:var(--blue);}
 .rtext strong{color:#fff;}
 
 .li-review-wrap{max-width:var(--max);margin:36px auto 0;padding:0 48px;}
-.li-review{background:linear-gradient(145deg,#ffffff 0%,#f7fbff 100%);border:1px solid var(--ink-20);border-radius:18px;padding:26px;box-shadow:0 12px 30px rgba(16,24,40,.08);}
-.li-review-head{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
-.li-avatar{width:86px;height:86px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 8px 20px rgba(16,24,40,.18);}
-.li-meta h4{font-size:18px;line-height:1.25;font-weight:600;margin:0;color:var(--ink);}
-.li-meta p{margin:3px 0 0;font-size:13px;color:var(--ink-60);}
-.li-badge{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:4px 10px;border-radius:999px;background:var(--blue-pale);color:var(--blue);font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;}
-.li-quote{padding:16px 18px;border-left:3px solid var(--blue);background:#fff;border-radius:0 10px 10px 0;font-size:15px;color:var(--ink-60);}
-.li-quote p{margin-bottom:12px;}
+.li-review{
+background:linear-gradient(145deg,#5b21b6 0%,#4c1d95 45%,#312e81 100%);
+border-radius:22px;
+padding:30px;
+position:relative;
+overflow:hidden;
+box-shadow:0 18px 40px rgba(49,46,129,.35);
+}
+.li-review::before,.li-review::after{
+content:"";
+position:absolute;
+width:240px;
+height:240px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 70%);
+pointer-events:none;
+}
+.li-review::before{top:-120px;left:-80px;}
+.li-review::after{bottom:-140px;right:-90px;}
+.li-title{
+position:relative;
+z-index:1;
+font-family:var(--serif);
+font-size:42px;
+line-height:1;
+color:rgba(255,255,255,.28);
+}
+.li-title.right{text-align:right;margin-top:-34px;}
+.li-card{
+position:relative;
+z-index:2;
+margin:-20px auto -20px;
+max-width:860px;
+background:#fff;
+border-radius:16px;
+padding:22px;
+border:1px solid rgba(255,255,255,.5);
+box-shadow:0 14px 28px rgba(16,24,40,.2);
+}
+.li-review-head{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.li-avatar{width:62px;height:62px;border-radius:50%;object-fit:cover;border:2px solid #f0f4ff;box-shadow:0 6px 14px rgba(16,24,40,.18);}
+.li-meta h4{font-size:17px;line-height:1.25;font-weight:600;margin:0;color:var(--ink);}
+.li-meta p{margin:2px 0 0;font-size:13px;color:var(--ink-60);}
+.li-quote{font-size:15px;color:var(--ink-60);}
+.li-quote p{margin-bottom:10px;}
 .li-quote p:last-child{margin-bottom:0;}
-.li-cta{margin-top:18px;}
-.li-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;background:var(--blue);color:#fff;}
+.li-cta{margin-top:14px;}
+.li-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-size:12.5px;font-weight:600;text-decoration:none;background:var(--blue);color:#fff;box-shadow:0 6px 14px rgba(29,78,216,.28);}
 .li-btn:hover{filter:brightness(.95);}
 
 .sec{max-width:var(--max);margin:0 auto;padding:92px 48px;border-bottom:1px solid var(--ink-20);background:#fff;}
@@ -219,8 +256,13 @@ nav{padding:0 20px;}.nr,.npill{display:none;}
 .impact{padding:44px 20px;}.impin{grid-template-columns:1fr 1fr;gap:32px;}.is{padding:0 14px;}
 .rbanner{padding:14px 20px;}
 .li-review-wrap{padding:0 20px;}
+.li-review{padding:20px;}
+.li-title{font-size:32px;}
+.li-title.right{margin-top:-22px;}
+.li-card{margin:-10px auto -10px;padding:16px;}
 .li-review-head{align-items:flex-start;}
-.li-avatar{width:72px;height:72px;}
+.li-avatar{width:54px;height:54px;}
+.li-btn{width:100%;justify-content:center;}
 .sec{padding:64px 20px;}
 .two,.obs,.pcr,.mg,.og,.rg,.scgrid,.meetcard,.botbody,.v2feats{grid-template-columns:1fr;}
 .mc.feat{grid-column:span 1;}
@@ -283,24 +325,27 @@ nav{padding:0 20px;}.nr,.npill{display:none;}
 <!-- LINKEDIN REVIEW -->
 <section class="li-review-wrap">
   <div class="li-review rv">
-    <div class="li-review-head">
-      <img src="../assets/linkedin/santosh-gadad.png" alt="Santosh Gadad profile photo" class="li-avatar">
-      <div class="li-meta">
-        <h4>Santosh Gadad · 1st</h4>
-        <p>Director at Expert Online Training (EOT)</p>
-        <span class="li-badge">LinkedIn Recommendation</span>
+    <div class="li-title">"</div>
+    <div class="li-card">
+      <div class="li-review-head">
+        <img src="../assets/linkedin/santosh-gadad.png" alt="Santosh Gadad profile photo" class="li-avatar">
+        <div class="li-meta">
+          <h4>Santosh Gadad · 1st</h4>
+          <p>Director at Expert Online Training (EOT)</p>
+        </div>
+      </div>
+      <div class="li-quote">
+        <p>I had the pleasure of working with Sainudheen on the redesign of our Expert Online Training (EOT) platform, where he led the transformation of a legacy dashboard into a modern, intuitive experience for both B2B and B2C users.</p>
+        <p>Sainudheen stands out for his ability to align user experience with business goals. Beyond elevating the design, he introduced thoughtful solutions that improved usability and overall customer satisfaction.</p>
+        <p>He demonstrated strong leadership throughout the project, owning the end-to-end design process while fostering collaboration and mentoring during the high-fidelity phase. His ability to work seamlessly with other designers ensured consistency and quality in the final product.</p>
+      </div>
+      <div class="li-cta">
+        <a class="li-btn" href="https://www.linkedin.com/in/sainu123/details/recommendations/?detailScreenTabIndex=2" target="_blank" rel="noopener noreferrer">
+          View all LinkedIn recommendations
+        </a>
       </div>
     </div>
-    <div class="li-quote">
-      <p>I had the pleasure of working with Sainudheen on the redesign of our Expert Online Training (EOT) platform, where he led the transformation of a legacy dashboard into a modern, intuitive experience for both B2B and B2C users.</p>
-      <p>Sainudheen stands out for his ability to align user experience with business goals. Beyond elevating the design, he introduced thoughtful solutions that improved usability and overall customer satisfaction.</p>
-      <p>He demonstrated strong leadership throughout the project, owning the end-to-end design process while fostering collaboration and mentoring during the high-fidelity phase. His ability to work seamlessly with other designers ensured consistency and quality in the final product.</p>
-    </div>
-    <div class="li-cta">
-      <a class="li-btn" href="https://www.linkedin.com/in/sainudheen/details/recommendations/?detailScreenTabIndex=2" target="_blank" rel="noopener noreferrer">
-        View all LinkedIn recommendations
-      </a>
-    </div>
+    <div class="li-title right">"</div>
   </div>
 </section>
 
