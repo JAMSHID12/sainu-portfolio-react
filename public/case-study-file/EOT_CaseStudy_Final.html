@@ -6,14 +6,14 @@
 <title>EOT Platform Redesign · Sainudheen Kaderi · Senior UX Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f6f3ee;--ink:#0e0e14;--ink-60:rgba(14,14,20,.58);--ink-20:rgba(14,14,20,.12);--white:#fff;--blue:#0d4fc4;--blue-pale:rgba(13,79,196,.07);--green:#0b6b40;--green-pale:rgba(11,107,64,.07);--red:#b93020;--red-pale:rgba(185,48,32,.07);--amber:#b45000;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--max:1140px;--r:12px;}
+:root{--bg:#ffffff;--ink:#0e0e14;--ink-60:rgba(14,14,20,.72);--ink-20:rgba(14,14,20,.14);--white:#fff;--blue:#0d4fc4;--blue-pale:rgba(13,79,196,.07);--green:#0b6b40;--green-pale:rgba(11,107,64,.07);--red:#b93020;--red-pale:rgba(185,48,32,.07);--amber:#b45000;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--max:1140px;--r:12px;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.72;font-size:16px;overflow-x:hidden;}
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-thumb{background:var(--ink-20);border-radius:2px;}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(246,243,238,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--ink-20);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--ink-20);}
 .nl{font-family:var(--mono);font-size:11.5px;color:var(--ink);text-decoration:none;}
 .nr{display:flex;gap:30px;}
 .nr a{font-size:12px;color:var(--ink-60);text-decoration:none;letter-spacing:.04em;transition:color .2s;}
@@ -25,7 +25,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;display:flex;ali
 .heye::before{content:'';width:26px;height:1px;background:var(--blue);flex-shrink:0;}
 h1{font-family:var(--serif);font-size:clamp(40px,5vw,66px);line-height:1.06;letter-spacing:-.02em;font-weight:700;}
 h1 i{font-style:italic;color:var(--blue);}
-.hdeck{margin-top:22px;font-size:16px;color:var(--ink-60);line-height:1.8;max-width:480px;}
+.hdeck{margin-top:22px;font-size:16px;color:var(--ink-60);line-height:1.8;max-width:540px;}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px;}
 .chip{font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:4px 12px;border-radius:100px;border:1px solid var(--ink-20);color:var(--ink-60);background:var(--white);}
 .hmeta{display:flex;flex-direction:column;}
@@ -52,7 +52,7 @@ h1 i{font-style:italic;color:var(--blue);}
 .rtext{font-size:13.5px;color:rgba(255,255,255,.9);font-weight:500;}
 .rtext strong{color:#fff;}
 
-.sec{max-width:var(--max);margin:0 auto;padding:92px 48px;border-bottom:1px solid var(--ink-20);}
+.sec{max-width:var(--max);margin:0 auto;padding:92px 48px;border-bottom:1px solid var(--ink-20);background:#fff;}
 .sec:last-of-type{border-bottom:none;}
 .seceye{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:48px;}
 .seceye::after{content:'';flex:1;height:1px;background:var(--ink-20);}
@@ -69,7 +69,7 @@ strong{color:var(--ink);font-weight:600;}
 .pqattr{font-family:var(--mono);font-size:10px;color:var(--ink-60);margin-top:10px;}
 
 .scwrap{margin-top:28px;border-radius:var(--r);overflow:hidden;border:1px solid var(--ink-20);}
-.schead{background:var(--ink-20);padding:11px 18px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60);display:flex;align-items:center;justify-content:space-between;}
+.schead{background:#f6f8fb;padding:11px 18px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60);display:flex;align-items:center;justify-content:space-between;}
 .scgrid{display:grid;grid-template-columns:1fr 1fr;}
 .scitem{background:var(--white);}
 .sclabel{padding:9px 14px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:7px;}
@@ -100,7 +100,7 @@ strong{color:var(--ink);font-weight:600;}
 .dt{font-size:14.5px;font-weight:600;color:#fff;flex:1;line-height:1.4;}
 .dtag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(107,156,248,.22);color:#6b9cf8;white-space:nowrap;flex-shrink:0;margin-top:2px;}
 .dbody{padding:22px 24px;}
-.dbody>p{font-size:14px;margin-bottom:14px;}
+.dbody>p{font-size:14.5px;color:var(--ink-60);margin-bottom:14px;}
 .pcr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px;}
 .pc{padding:14px 18px;border-radius:9px;}
 .pc.pro{background:var(--green-pale);border:1px solid rgba(11,107,64,.2);}
