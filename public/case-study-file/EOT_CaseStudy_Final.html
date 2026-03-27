@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EOT Platform Redesign · Sainudheen Kaderi · Senior UX Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f3ee;--ink:#0e0e14;--ink-60:rgba(14,14,20,.58);--ink-20:rgba(14,14,20,.12);--white:#fff;--blue:#0d4fc4;--blue-pale:rgba(13,79,196,.07);--green:#0b6b40;--green-pale:rgba(11,107,64,.07);--red:#b93020;--red-pale:rgba(185,48,32,.07);--amber:#b45000;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--max:1140px;--r:12px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.72;font-size:16px;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--ink-20);border-radius:2px;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(246,243,238,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--ink-20);}
+.nl{font-family:var(--mono);font-size:11.5px;color:var(--ink);text-decoration:none;}
+.nr{display:flex;gap:30px;}
+.nr a{font-size:12px;color:var(--ink-60);text-decoration:none;letter-spacing:.04em;transition:color .2s;}
+.nr a:hover{color:var(--ink);}
+.npill{font-size:11px;font-family:var(--mono);padding:6px 16px;background:var(--ink);color:var(--bg);border-radius:100px;text-decoration:none;}
+
+.hero{max-width:var(--max);margin:0 auto;padding:128px 48px 80px;display:grid;grid-template-columns:1.2fr 1fr;gap:88px;align-items:end;}
+.heye{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:26px;}
+.heye::before{content:'';width:26px;height:1px;background:var(--blue);flex-shrink:0;}
+h1{font-family:var(--serif);font-size:clamp(40px,5vw,66px);line-height:1.06;letter-spacing:-.02em;font-weight:700;}
+h1 i{font-style:italic;color:var(--blue);}
+.hdeck{margin-top:22px;font-size:16px;color:var(--ink-60);line-height:1.8;max-width:480px;}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px;}
+.chip{font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:4px 12px;border-radius:100px;border:1px solid var(--ink-20);color:var(--ink-60);background:var(--white);}
+.hmeta{display:flex;flex-direction:column;}
+.mr{padding:16px 0;border-bottom:1px solid var(--ink-20);}
+.mr:first-child{border-top:1px solid var(--ink-20);}
+.ml{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:5px;}
+.mv{font-size:13.5px;font-weight:500;line-height:1.55;}
+.mv em{font-style:normal;color:var(--blue);}
+
+.impact{background:var(--ink);padding:60px 48px;}
+.impin{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.is{padding:0 36px;border-right:1px solid rgba(255,255,255,.08);}
+.is:first-child{padding-left:0;}
+.is:last-child{border-right:none;}
+.ie{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:12px;display:block;}
+.inum{font-family:var(--serif);font-size:52px;line-height:1;color:#fff;margin-bottom:8px;}
+.inum span{color:#6b9cf8;font-style:italic;}
+.idesc{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.55;}
+.isrc{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.18);margin-top:7px;}
+
+.rbanner{background:var(--green);padding:18px 48px;}
+.rbannin{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:14px;}
+.rbadge{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.2);color:#fff;padding:4px 12px;border-radius:100px;flex-shrink:0;}
+.rtext{font-size:13.5px;color:rgba(255,255,255,.9);font-weight:500;}
+.rtext strong{color:#fff;}
+
+.sec{max-width:var(--max);margin:0 auto;padding:92px 48px;border-bottom:1px solid var(--ink-20);}
+.sec:last-of-type{border-bottom:none;}
+.seceye{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:48px;}
+.seceye::after{content:'';flex:1;height:1px;background:var(--ink-20);}
+.en{color:var(--blue);margin-right:3px;}
+h2{font-family:var(--serif);font-size:clamp(30px,3.5vw,46px);line-height:1.1;letter-spacing:-.02em;font-weight:700;}
+h3{font-family:var(--serif);font-size:22px;line-height:1.3;font-weight:700;margin-bottom:13px;}
+p{color:var(--ink-60);margin-bottom:16px;font-size:15.5px;}
+p:last-child{margin-bottom:0;}
+strong{color:var(--ink);font-weight:600;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+
+.pq{border-left:3px solid var(--blue);padding:20px 28px;margin:30px 0;background:var(--blue-pale);border-radius:0 10px 10px 0;}
+.pq p{font-family:var(--serif);font-size:19px;line-height:1.55;font-style:italic;color:var(--ink);margin:0;}
+.pqattr{font-family:var(--mono);font-size:10px;color:var(--ink-60);margin-top:10px;}
+
+.scwrap{margin-top:28px;border-radius:var(--r);overflow:hidden;border:1px solid var(--ink-20);}
+.schead{background:var(--ink-20);padding:11px 18px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60);display:flex;align-items:center;justify-content:space-between;}
+.scgrid{display:grid;grid-template-columns:1fr 1fr;}
+.scitem{background:var(--white);}
+.sclabel{padding:9px 14px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:7px;}
+.sclabel.old{background:var(--red-pale);color:var(--red);}
+.sclabel.nw{background:var(--green-pale);color:var(--green);}
+.sclabel span{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.sclabel.old span{background:var(--red);}
+.sclabel.nw span{background:var(--green);}
+.scimg{width:100%;height:230px;object-fit:cover;object-position:top;display:block;border-top:1px solid var(--ink-20);}
+.sccap{padding:10px 14px;font-size:11.5px;color:var(--ink-60);border-top:1px solid var(--ink-20);}
+
+.obs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px;}
+.oc{background:var(--ink);border-radius:var(--r);padding:26px;}
+.onum{font-family:var(--serif);font-size:44px;line-height:1;color:#6b9cf8;font-style:italic;margin-bottom:9px;}
+.otitle{font-size:14px;font-weight:600;color:#fff;margin-bottom:7px;}
+.obody{font-size:13px;color:rgba(255,255,255,.48);line-height:1.6;}
+
+.tl{padding-left:26px;border-left:1px solid var(--ink-20);}
+.ti{position:relative;padding-bottom:40px;}
+.ti:last-child{padding-bottom:0;}
+.tdot{position:absolute;left:-31px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--blue);outline:3px solid var(--bg);}
+.tph{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:5px;}
+.ttitle{font-size:15px;font-weight:600;margin-bottom:7px;}
+.tbody{font-size:13.5px;color:var(--ink-60);line-height:1.7;}
+
+.db{border:1px solid var(--ink-20);border-radius:var(--r);overflow:hidden;background:var(--white);margin-bottom:20px;}
+.dh{background:var(--ink);padding:15px 22px;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+.dt{font-size:14.5px;font-weight:600;color:#fff;flex:1;line-height:1.4;}
+.dtag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(107,156,248,.22);color:#6b9cf8;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.dbody{padding:22px 24px;}
+.dbody>p{font-size:14px;margin-bottom:14px;}
+.pcr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px;}
+.pc{padding:14px 18px;border-radius:9px;}
+.pc.pro{background:var(--green-pale);border:1px solid rgba(11,107,64,.2);}
+.pc.con{background:var(--red-pale);border:1px solid rgba(185,48,32,.2);}
+.pc h5{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:9px;}
+.pc.pro h5{color:var(--green);}
+.pc.con h5{color:var(--red);}
+.pc ul{padding-left:15px;display:flex;flex-direction:column;gap:5px;}
+.pc li{font-size:12.5px;color:var(--ink-60);}
+.mit{margin-top:14px;padding:13px 16px;background:var(--blue-pale);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;}
+.mit h5{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:5px;}
+.mit p{font-size:12.5px;margin:0;}
+
+.supcard{background:var(--ink);border-radius:var(--r);padding:36px;margin-top:36px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;align-items:center;}
+.supstat{text-align:center;}
+.supnum{font-family:var(--serif);font-size:64px;line-height:1;font-weight:700;}
+.supnum.before{color:#ef8b7a;}
+.supnum.after{color:#6bdba4;}
+.supstat label{font-size:12px;color:rgba(255,255,255,.45);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;display:block;margin-top:8px;}
+.suparrow{text-align:center;font-size:40px;color:rgba(255,255,255,.2);}
+.supdesc{font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.65;grid-column:span 3;border-top:1px solid rgba(255,255,255,.08);padding-top:24px;margin-top:8px;}
+
+.meetcard{background:var(--white);border:1px solid var(--ink-20);border-radius:var(--r);overflow:hidden;margin-top:32px;display:grid;grid-template-columns:1fr 1fr;}
+.meetimg{width:100%;height:100%;object-fit:cover;min-height:240px;display:block;}
+.meetcont{padding:30px;}
+.meeteye{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.meeteye::before{content:'';width:16px;height:1px;background:var(--blue);}
+
+.botcard{background:var(--white);border:1px solid var(--ink-20);border-radius:var(--r);overflow:hidden;margin-top:32px;}
+.bothead{background:var(--blue);padding:18px 24px;display:flex;align-items:center;gap:14px;}
+.boticon{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.bottitle{font-family:var(--serif);font-size:20px;color:#fff;font-weight:700;}
+.botsub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px;}
+.botbody{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.botflow{display:flex;flex-direction:column;gap:10px;}
+.botstep{display:flex;align-items:flex-start;gap:12px;}
+.botnum{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--mono);font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.botsteptxt{font-size:13.5px;color:var(--ink-60);line-height:1.6;}
+.botsteptxt strong{color:var(--ink);}
+.botimp{background:var(--ink);border-radius:10px;padding:22px;}
+.botimp h4{font-size:14px;font-weight:600;color:#fff;margin-bottom:13px;}
+.botimp ul{padding-left:16px;display:flex;flex-direction:column;gap:8px;}
+.botimp li{font-size:13px;color:rgba(255,255,255,.5);}
+.botimp li strong{color:rgba(255,255,255,.88);}
+
+.mg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;}
+.mc{background:var(--white);border:1px solid var(--ink-20);border-radius:var(--r);padding:24px;transition:transform .2s,box-shadow .2s;}
+.mc:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(14,14,20,.07);}
+.mc.feat{grid-column:span 3;background:var(--ink);}
+.mnum{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;display:block;}
+.mc.feat .mnum{color:rgba(255,255,255,.28);}
+.mc h4{font-family:var(--serif);font-size:18px;line-height:1.3;font-weight:700;margin-bottom:9px;}
+.mc.feat h4{color:#fff;font-size:21px;}
+.mc p{font-size:13px;}
+.mc.feat p{color:rgba(255,255,255,.52);}
+.mpill{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:10px;padding:4px 12px;border-radius:100px;background:var(--blue-pale);color:var(--blue);}
+.mc.feat .mpill{background:rgba(107,156,248,.18);color:#6b9cf8;}
+
+.og{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px;}
+.oc2{border-radius:var(--r);border:1px solid var(--ink-20);background:var(--white);padding:28px;}
+.oc2.hero{background:var(--blue);border-color:var(--blue);}
+.om{font-family:var(--serif);font-size:50px;line-height:1;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.oc2.hero .om{color:#fff;}
+.ol{font-size:13.5px;color:var(--ink-60);line-height:1.6;}
+.oc2.hero .ol{color:rgba(255,255,255,.7);}
+.os{font-family:var(--mono);font-size:9.5px;color:var(--blue);margin-top:9px;letter-spacing:.04em;}
+.oc2.hero .os{color:rgba(255,255,255,.45);}
+
+.v2card{background:var(--ink);border-radius:var(--r);padding:36px;margin-top:32px;}
+.v2eye{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.v2eye::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.1);}
+.v2card h3{font-family:var(--serif);font-size:26px;color:#fff;margin-bottom:14px;}
+.v2card p{color:rgba(255,255,255,.52);font-size:14px;}
+.v2feats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;}
+.v2f{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:18px 20px;}
+.v2fi{font-size:22px;margin-bottom:10px;}
+.v2f h5{font-size:13.5px;font-weight:600;color:#fff;margin-bottom:6px;}
+.v2f p{font-size:12.5px;color:rgba(255,255,255,.42);margin:0;}
+
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px;}
+.rc{background:var(--white);border:1px solid var(--ink-20);border-radius:var(--r);padding:24px 26px;}
+.rc.change{border-left:3px solid var(--amber);}
+.rc.keep{border-left:3px solid var(--green);}
+.rl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;display:block;}
+.rc.change .rl{color:var(--amber);}
+.rc.keep .rl{color:var(--green);}
+.rc h4{font-size:14.5px;font-weight:600;margin-bottom:8px;}
+.rc p{font-size:13.5px;}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
+.rv.in{opacity:1;transform:none;}
+
+footer{background:var(--ink);padding:60px 48px;}
+.fi{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;}
+.fn{font-family:var(--serif);font-size:30px;color:#fff;font-weight:700;}
+.fs{font-size:12.5px;color:rgba(255,255,255,.3);margin-top:5px;}
+.fn2{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.2);text-align:right;max-width:300px;line-height:1.65;}
+
+@media(max-width:900px){
+nav{padding:0 20px;}.nr,.npill{display:none;}
+.hero{grid-template-columns:1fr;gap:44px;padding:100px 20px 60px;}
+.impact{padding:44px 20px;}.impin{grid-template-columns:1fr 1fr;gap:32px;}.is{padding:0 14px;}
+.rbanner{padding:14px 20px;}
+.sec{padding:64px 20px;}
+.two,.obs,.pcr,.mg,.og,.rg,.scgrid,.meetcard,.botbody,.v2feats{grid-template-columns:1fr;}
+.mc.feat{grid-column:span 1;}
+.supcard{grid-template-columns:1fr;text-align:left;}.suparrow{display:none;}.supdesc{grid-column:span 1;}
+.fi{flex-direction:column;gap:18px;align-items:flex-start;}.fn2{text-align:left;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nl" href="#">Sainudheen Kaderi / Senior UX Designer</a>
+  <div class="nr">
+    <a href="#problem">Problem</a>
+    <a href="#research">Research</a>
+    <a href="#solution">Solution</a>
+    <a href="#impact">Real Impact</a>
+    <a href="#outcome">Outcomes</a>
+  </div>
+  <a class="npill" href="#">Portfolio ↗</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="heye">End-to-End B2B SaaS Redesign · EOT Platform · 2023–2024</div>
+    <h1>Turning a <i>legacy<br>dashboard</i> into a<br>command center</h1>
+    <p class="hdeck">Expert Online Training (EOT) was serving hundreds of summer camp directors across North America on a platform unchanged since 2008. I led the complete end-to-end redesign — all six modules — from first stakeholder interview to live product. The real outcome: support team reduced from 7 to 2, 100% of clients migrated, and a chatbot built at zero cost that changed how users navigate the platform.</p>
+    <div class="chips">
+      <span class="chip">B2B SaaS · LMS</span><span class="chip">Solo UX Lead</span><span class="chip">6 Modules</span><span class="chip">Live Product</span><span class="chip">WCAG 2.1 AA</span><span class="chip">AI Chatbot</span><span class="chip">Dark + Light Mode</span><span class="chip">10+ Years Experience</span>
+    </div>
+  </div>
+  <div class="hmeta">
+    <div class="mr"><div class="ml">My Role</div><div class="mv">Solo UX Designer — research, IA, wireframes, flows, design system, hi-fi. <em>One freelance designer</em> joined for visual polish in hi-fi phase only.</div></div>
+    <div class="mr"><div class="ml">Client</div><div class="mv">Expert Online Training (EOT) · B2B EdTech · Canada · Summer camp organisations, North America</div></div>
+    <div class="mr"><div class="ml">Scope</div><div class="mv">Dashboard · Library · Courses · Custom Module Builder · Staff Management · Completion Tracking + Stats Assistant Chatbot</div></div>
+    <div class="mr"><div class="ml">Timeline</div><div class="mv">5 months design + 6 months phased migration · Live product, all clients migrated</div></div>
+    <div class="mr"><div class="ml">Tools</div><div class="mv">Figma · FigJam · Adobe Photoshop · Illustrator</div></div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<div class="impact">
+  <div class="impin">
+    <div class="is rv"><span class="ie">Support team</span><div class="inum">7→<span>2</span></div><div class="idesc">Staff reduced post-redesign + chatbot. Confirmed real outcome.</div><div class="isrc">Stakeholder-validated · PM Josh Gadad</div></div>
+    <div class="is rv"><span class="ie">Task completion time</span><div class="inum">48<span>%</span></div><div class="idesc">Faster on core workflows — check status, add staff, assign course</div><div class="isrc">Prototype usability task testing</div></div>
+    <div class="is rv"><span class="ie">Screens to check staff status</span><div class="inum">5→<span>1</span></div><div class="idesc">Five disconnected pages consolidated into one unified dashboard</div><div class="isrc">Click-path comparative analysis</div></div>
+    <div class="is rv"><span class="ie">Client migration</span><div class="inum">100<span>%</span></div><div class="idesc">All active clients successfully moved to new platform. Zero permanent drop-offs.</div><div class="isrc">Confirmed by PM · post-migration</div></div>
+  </div>
+</div>
+
+<!-- REAL IMPACT BANNER -->
+<div class="rbanner">
+  <div class="rbannin">
+    <span class="rbadge">✓ Confirmed Real Outcome</span>
+    <span class="rtext">The <strong>support team reduction from 7 to 2</strong> is a confirmed post-launch business fact — validated directly by Product Manager Josh Gadad and Dev Manager David Price in a stakeholder review session I personally attended.</span>
+  </div>
+</div>
+
+<!-- SECTION 1: PROBLEM -->
+<div id="problem" class="sec">
+  <div class="seceye"><span class="en">01 /</span> The Real Problem</div>
+  <div class="two">
+    <div>
+      <h2>The platform hadn't changed since 2008. Everything else had.</h2>
+      <p>When I first logged into EOT's live platform, I found what camp directors had been living with for years. The dashboard greeted them with a grey silhouette avatar and the text "Hi David." A single subscription card showed four rows of raw numbers. And the most visually prominent element on the entire screen — the largest, most styled UI component — was a yellow button reading <strong>"Buy More Staff Accounts."</strong></p>
+      <p>The Administration page was a list of five plain blue hyperlinks. The Manage Courses screen showed course names in a text list with pencil and bin icons — no thumbnails, no enrolled count, no performance data. Statistics was a full-page list of course names with "Course Stats / Individual Stats" text links beside each one. The E-mail Staff page showed eight bullet-point links on a plain white background. Nothing was scannable. Nothing communicated urgency. Nothing answered a director's actual question.</p>
+      <div class="pq">
+        <p>"I log in to check if my staff are ready for opening day and I genuinely don't know where to look. I end up calling support."</p>
+        <div class="pqattr">— Camp Director · stakeholder discovery interview</div>
+      </div>
+      <p>This was a structural failure: the platform was organised around EOT's internal product categories, not around how a camp director thinks about running a camp. Every redesign decision flows from this single insight.</p>
+    </div>
+    <div>
+      <div style="background:var(--white);border:1px solid var(--ink-20);border-radius:var(--r);overflow:hidden;margin-bottom:18px;">
+        <div style="background:var(--red-pale);padding:11px 18px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>7 real UX failures documented from the live platform</div>
+        <div style="padding:20px 22px;background:var(--white);">
+          <ul style="padding-left:16px;display:flex;flex-direction:column;gap:9px;">
+            <li style="font-size:13.5px;color:var(--ink-60);"><strong>Dashboard:</strong> "Hi David" + 4 data rows + yellow "Buy More Staff Accounts" as hero CTA. Right half entirely blank.</li>
+            <li style="font-size:13.5px;color:var(--ink-60);"><strong>Administration:</strong> 5 blue hyperlinks on a white page. No grouping, no icons that communicate meaning, no visual hierarchy.</li>
+            <li style="font-size:13.5px;color:var(--ink-60);"><strong>Manage Courses:</strong> Text list + pencil/bin only. No thumbnails, no status, no enrolled count visible without clicking.</li>
+            <li style="font-size:13.5px;color:var(--ink-60);"><strong>Manage Custom Modules:</strong> Plain data table + a create-module form below it on the same page. Feature completely buried.</li>
+            <li style="font-size:13.5px;color:var(--ink-60);"><strong>Manage Staff:</strong> Name + email + edit/delete only. No photos, no last login, no progress, no course enrollment visible.</li>
+            <li style="font-size:13.5px;color:var(--ink-60);"><strong>Statistics:</strong> Full-page text list of course names. Every number hidden behind another click.</li>
+            <li style="font-size:13.5px;color:var(--ink-60);"><strong>E-mail Staff:</strong> 8 plain bullet-point links. No composition UI, no message history, no feedback on send status.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="scwrap">
+        <div class="schead"><span>Dashboard — Before vs After (real screens)</span></div>
+        <div class="scgrid">
+          <div class="scitem"><div class="sclabel old"><span></span>2008 Original</div><img src="/mnt/user-data/uploads/Dashboard_Old_2008.png" alt="Old dashboard" class="scimg"><div class="sccap">Generic greeting · raw data table · upsell CTA as hero · blank right half</div></div>
+          <div class="scitem"><div class="sclabel nw"><span></span>Redesigned V1 (live)</div><img src="/mnt/user-data/uploads/New_dash_board.png" alt="New dashboard" class="scimg"><div class="sccap">Named director + gauge metrics · video · admin cards · stats · live notifications</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: MY ROLE -->
+<div class="sec">
+  <div class="seceye"><span class="en">02 /</span> My Role & What I Owned</div>
+  <div class="two">
+    <div>
+      <h2>Solo designer. Every stage. This is the live product.</h2>
+      <p>I owned this project from the first discovery session to the live platform that all EOT clients use today. Every research session, architectural decision, wireframe, component, and the case made for pulling the chatbot into V1 — all mine.</p>
+      <p>In the final hi-fi phase — with 100+ screens to produce across light and dark modes — I brought in one freelance UI designer to accelerate production. All design decisions, system architecture, and rationale documentation remained my sole responsibility throughout.</p>
+      <p>Critically, I stayed involved after handoff. I attended post-launch client meetings, heard the migration friction firsthand, and brought those insights back to make the case for the V1 chatbot. That decision produced the biggest measurable business outcome of the project: the support team reduction from 7 to 2.</p>
+    </div>
+    <div class="tl rv">
+      <div class="ti"><div class="tdot"></div><div class="tph">Phase 1 · Discovery</div><div class="ttitle">Live platform audit + stakeholder interviews</div><div class="tbody">Before writing a research question, I logged into the live platform and documented every screen, flow, and navigation path — identifying 7 structural UX failures. Conducted discovery sessions with PM Josh Gadad and Dev Manager David Price to understand business constraints, goals, and the competitive landscape.</div></div>
+      <div class="ti"><div class="tdot"></div><div class="tph">Phase 2 · Research</div><div class="ttitle">Competitive analysis, personas, empathy mapping</div><div class="tbody">SWOT analysis against 3 direct competitors. Key finding: EOT's custom module builder was a genuine differentiator none of the three competitors matched — but the old UX buried it 4 navigation levels deep. Built primary camp director persona (age 30–60) from interview synthesis.</div></div>
+      <div class="ti"><div class="tdot"></div><div class="tph">Phase 3 · Architecture</div><div class="ttitle">Full IA rebuild + 6-module mind mapping</div><div class="tbody">Rebuilt the entire IA from scratch around director mental models. Key discovery: Staff Management alone had 11 distinct action types. This directly shaped the "More Actions" dropdown pattern — keeping power-user capabilities accessible without overwhelming the primary view.</div></div>
+      <div class="ti"><div class="tdot"></div><div class="tph">Phase 4 · Design</div><div class="ttitle">Wireframes, flows, design system, hi-fi</div><div class="tbody">Wireframes for all 6 modules. 5 critical user flows with video walkthroughs. Full design system: WCAG-tested colour palette, Open Sans type scale, 40+ icon library, complete component library. Hi-fi screens in both light and dark mode. Freelance designer joined for production volume.</div></div>
+      <div class="ti"><div class="tdot"></div><div class="tph">Phase 5 · Migration</div><div class="ttitle">Handoff + 6-month client migration + chatbot</div><div class="tbody">Figma prototypes and dev documentation handed off. I personally attended post-launch client meetings to understand migration friction. Advocated for and helped shape the V1 chatbot feature based on what I heard directly from clients. 6-month migration completed — 100% of clients on new platform.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: RESEARCH -->
+<div id="research" class="sec">
+  <div class="seceye"><span class="en">03 /</span> Research & What It Changed</div>
+  <h2>What research revealed that the brief didn't say.</h2>
+  <p style="max-width:620px;margin-bottom:0;">I expected to find navigation problems. What the research showed was a deeper issue: the platform was designed around how EOT categorised its training content — not around how a director thinks about managing a camp season.</p>
+  <div class="obs">
+    <div class="oc rv"><div class="onum">5</div><div class="otitle">Screens to answer one question</div><div class="obody">To check "are my staff on track?" directors visited: Dashboard → Statistics History → Manage Courses → individual course → staff list. The redesign makes this visible at login — zero additional navigation.</div></div>
+    <div class="oc rv"><div class="onum">8</div><div class="otitle">Steps to add one staff member</div><div class="obody">Old flow: Dashboard → Administration → Manage Staff Accounts → Create Staff Account → form → submit → back to list. Redesigned flow: 3 steps from one "+ Add Staff" entry point with three method options.</div></div>
+    <div class="oc rv"><div class="onum">0/3</div><div class="otitle">Competitors with custom course tools</div><div class="obody">EOT's custom module builder — create your own courses with video, PDFs, and quizzes — was a genuine differentiator. Zero of three competitors offered it. The old UX buried it under Administration → Manage Your Custom Modules. The redesign made it primary navigation.</div></div>
+    <div class="oc rv"><div class="onum">18–60</div><div class="otitle">Age range of actual platform users</div><div class="obody">Staff ranged from 18-year-old seasonal workers to 60-year-old administrators. WCAG 2.1 AA was a design constraint from day one — not a final audit. Both primary blues passed contrast testing: 5.78:1 and 5.44:1.</div></div>
+  </div>
+
+  <!-- LIBRARY COMPARISON -->
+  <div class="scwrap rv" style="margin-top:32px;">
+    <div class="schead"><span>Library — Before vs After</span></div>
+    <div class="scgrid">
+      <div class="scitem"><div class="sclabel old"><span></span>Old Library</div><img src="/mnt/user-data/uploads/Librry_Old_2008.png" alt="Old library" class="scimg"><div class="sccap">Accordion text list · no thumbnails · 3 yellow buttons · no visual content hierarchy</div></div>
+      <div class="scitem"><div class="sclabel nw"><span></span>Redesigned Library</div><img src="/mnt/user-data/uploads/Library_New.png" alt="New library" class="scimg"><div class="sccap">Visual card grid · category filter tabs · duration + resource badges · streaming-style discovery</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: SOLUTION -->
+<div id="solution" class="sec">
+  <div class="seceye"><span class="en">04 /</span> The Solution — 6 Modules + Chatbot</div>
+  <h2>One system. Six transformed surfaces.</h2>
+  <p style="max-width:620px;margin-bottom:20px;">Every module redesigned around one principle: answer the question a director actually has, in the fewest steps possible. One component library. One spacing system. One colour and type scale. A platform — not a collection of admin pages.</p>
+
+  <div class="scwrap rv">
+    <div class="schead"><span>Course Management — Before vs After</span></div>
+    <div class="scgrid">
+      <div class="scitem"><div class="sclabel old"><span></span>Old Manage Courses</div><img src="/mnt/user-data/uploads/Manage_course_old_2008.png" alt="Old courses" class="scimg"><div class="sccap">Text list + pencil/bin · no thumbnails · "NO COURSE SELECTED" blank right panel</div></div>
+      <div class="scitem"><div class="sclabel nw"><span></span>Redesigned Courses</div><img src="/mnt/user-data/uploads/Course_New.png" alt="New courses" class="scimg"><div class="sccap">Visual data table · thumbnails · enrolled/in-progress/completed · performance % · inline actions</div></div>
+    </div>
+  </div>
+
+  <div class="scwrap rv" style="margin-top:18px;">
+    <div class="schead"><span>Staff Management — Before vs After</span></div>
+    <div class="scgrid">
+      <div class="scitem"><div class="sclabel old"><span></span>Old Manage Staff</div><img src="/mnt/user-data/uploads/Manage_Staff_old_2008.png" alt="Old staff" class="scimg"><div class="sccap">Name + email only · no profile photos · no progress · 4 yellow action buttons at bottom</div></div>
+      <div class="scitem"><div class="sclabel nw"><span></span>Redesigned Staff</div><img src="/mnt/user-data/uploads/Staff_New.png" alt="New staff" class="scimg"><div class="sccap">Profile photos · courses enrolled · last login + device · progress bar · + Add Staff in header</div></div>
+    </div>
+  </div>
+
+  <div class="scwrap rv" style="margin-top:18px;">
+    <div class="schead"><span>Create Custom Course — Before vs After</span></div>
+    <div class="scgrid">
+      <div class="scitem"><div class="sclabel old"><span></span>Old Custom Modules</div><img src="/mnt/user-data/uploads/Manage_custom_old_2008.png" alt="Old custom modules" class="scimg"><div class="sccap">Plain data table + create form below it · buried under Administration · no visual preview</div></div>
+      <div class="scitem"><div class="sclabel nw"><span></span>Redesigned Course Builder</div><img src="/mnt/user-data/uploads/Create_course_New.png" alt="New course builder" class="scimg"><div class="sccap">Split-screen builder · browse EOT content left · added modules right · category filter tabs</div></div>
+    </div>
+  </div>
+
+  <div class="mg" style="margin-top:20px;">
+    <div class="mc feat"><span class="mnum">Design Principle</span><h4>Director-first architecture — applied to every module</h4><p>Every screen answers a question a director actually asks. Not "how does the database categorise this?" but "what does a camp director need to know right now, and what action might they take next?"</p><span class="mpill">Applied across all 6 modules</span></div>
+    <div class="mc rv"><span class="mnum">Module 01</span><h4>Dashboard</h4><p>Licence gauge · course + staff performance gauges · featured video · admin summary cards · statistics · live notifications. 5 separate pages → 1 screen.</p><span class="mpill">5 screens → 1</span></div>
+    <div class="mc rv"><span class="mnum">Module 02</span><h4>Library</h4><p>Visual card grid, category filter tabs, Most Popular/Latest/Continue Watching. EOT content made discoverable for the first time.</p><span class="mpill">~38% faster discovery</span></div>
+    <div class="mc rv"><span class="mnum">Module 03</span><h4>Course Management</h4><p>Visual data table with thumbnails, enrolled/in-progress/completed counts, performance %, inline actions. "More Actions" dropdown manages 11-action set without clutter.</p><span class="mpill">11 actions → 2-tier IA</span></div>
+    <div class="mc rv"><span class="mnum">Module 04</span><h4>Custom Module Builder</h4><p>EOT's strongest differentiator — promoted from buried admin link to primary navigation for the first time. Split-screen builder with video, PDF, Word, Excel, custom quizzes.</p><span class="mpill">First time in primary nav</span></div>
+    <div class="mc rv"><span class="mnum">Module 05</span><h4>Staff Management</h4><p>Profile photos, courses enrolled, last login, login device, inline progress bar — all in one table row. Three add methods (individual / bulk / import) from single entry point.</p><span class="mpill">8 steps → 3 steps</span></div>
+    <div class="mc rv"><span class="mnum">Module 06</span><h4>Completion Tracking</h4><p>Per-staff, per-course breakdown with progress bar. Certificate download, export, and direct message from the same table row. No context switching.</p><span class="mpill">Zero context switches</span></div>
+  </div>
+</div>
+
+<!-- SECTION 5: CHATBOT -->
+<div class="sec">
+  <div class="seceye"><span class="en">05 /</span> Stats Assistant — The Feature That Changed Everything</div>
+  <div class="two">
+    <div>
+      <h2>A chatbot built for free that halved the support team.</h2>
+      <p>This was originally a V2 feature. During the migration period, support calls spiked — directors new to the interface were asking a specific question repeatedly: "how many of my staff have completed the course?" and "who hasn't logged in yet?" These were questions the new UI answered visually, but new users weren't yet fluent.</p>
+      <p>After attending post-launch client meetings and hearing this directly, I made the case for pulling the chatbot into V1. We built a precision tool — not a general AI assistant, but a natural language interface that converted plain-English questions into database queries and returned direct, accurate answers with links to the relevant page.</p>
+      <p>It was built at <strong>zero additional cost</strong> — no AI subscriptions, no external APIs in V1. The existing database infrastructure was enough. The result was the biggest measurable business outcome of the entire project.</p>
+      <div class="pq">
+        <p>"How many staff have completed the courses?" → Samantha Douglas — 1 course ✓, Clara Tubiana — 1 course ✓. Total: 2 staff completed all courses.</p>
+        <div class="pqattr">— Live Stats Assistant interaction · EOT platform · V1</div>
+      </div>
+    </div>
+    <div>
+      <div style="border-radius:var(--r);overflow:hidden;border:1px solid var(--ink-20);">
+        <div style="padding:10px 16px;background:var(--blue-pale);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);">Stats Assistant · Live V1 · Real Screenshot</div>
+        <img src="/mnt/user-data/uploads/Chat_bot_New.png" alt="Stats Assistant chatbot" style="width:100%;display:block;">
+      </div>
+    </div>
+  </div>
+
+  <div class="botcard rv">
+    <div class="bothead">
+      <div class="boticon">💬</div>
+      <div><div class="bottitle">How the Stats Assistant works</div><div class="botsub">Text → Query → Database → Result (with links and help videos)</div></div>
+    </div>
+    <div class="botbody">
+      <div class="botflow">
+        <div class="botstep"><div class="botnum">1</div><div class="botsteptxt"><strong>Director types a natural question</strong> — "How is Jim doing?", "Who's finished everything?", "Give me an overview"</div></div>
+        <div class="botstep"><div class="botnum">2</div><div class="botsteptxt"><strong>Text converted to a database query</strong> — the system translates the natural language question into a structured query (similar to SQL)</div></div>
+        <div class="botstep"><div class="botnum">3</div><div class="botsteptxt"><strong>Query runs against the live database</strong> — fetches real, current data. Platform confirms: "All data comes directly from your database — nothing is estimated or made up."</div></div>
+        <div class="botstep"><div class="botnum">4</div><div class="botsteptxt"><strong>Result returned in plain language</strong> — with staff names, counts, and status. Includes <strong>clickable links</strong> to the relevant platform page and can surface existing help videos for common questions.</div></div>
+      </div>
+      <div class="botimp">
+        <h4>What this feature delivered</h4>
+        <ul>
+          <li><strong>Support team: 7 → 2.</strong> The single most significant confirmed business outcome of the project.</li>
+          <li><strong>Built at zero additional cost</strong> — no AI subscriptions, no external APIs in V1. Existing database infrastructure.</li>
+          <li><strong>Eliminated the most common support call type</strong> — "I can't find who completed what" — entirely.</li>
+          <li><strong>Reduced migration friction</strong> at the highest-friction point — new users adapting to the new interface.</li>
+          <li><strong>Validated the V2 AI roadmap</strong> — screenshot-based support and full conversational navigation now in planning.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: DECISIONS -->
+<div class="sec">
+  <div class="seceye"><span class="en">06 /</span> Key Design Decisions & Conscious Tradeoffs</div>
+  <h2>What we chose, what we cut, and why.</h2>
+  <p style="max-width:620px;margin-bottom:40px;">Senior design is as much about what you don't build as what you do — and being able to articulate why. Every decision here had a real constraint and a documented rationale.</p>
+
+  <div class="db rv">
+    <div class="dh"><div class="dt">Chatbot pulled into V1 — originally planned for V2</div><div class="dtag">Scope Decision · Real Story</div></div>
+    <div class="dbody">
+      <p>This is the most consequential scope decision in the project. The chatbot was firmly in the V2 roadmap. During the migration period, support calls increased temporarily. After attending client meetings and hearing what was driving those calls — one specific question type about completion status — I brought that data back and advocated for an accelerated V1 version.</p>
+      <div class="pcr">
+        <div class="pc pro"><h5>Why we accelerated it</h5><ul><li>Support calls concentrated on one query type: "who has/hasn't completed training?" — a database problem, not a UI problem</li><li>Existing DB infrastructure meant zero additional cost for V1</li><li>Migration period was the highest-friction moment — having the chatbot available then was far more valuable than six months later</li><li>Camp directors tested it during migration and responded positively immediately</li></ul></div>
+        <div class="pc con"><h5>The tradeoff accepted</h5><ul><li>V1 chatbot handles data queries only — cannot take actions or handle errors</li><li>Screenshot-based support (the original V2 vision) deferred — too expensive without AI subscription</li><li>Required re-prioritising approximately 2 weeks of development time</li></ul></div>
+      </div>
+      <div class="mit"><h5>V2 roadmap confirmed</h5><p>V2 planning is complete. Advanced AI features — screenshot-based error guidance, ChatGPT-style conversational navigation — are scoped and may require an AI subscription. The V1 chatbot proved the concept and demonstrated clear ROI before committing to that cost.</p></div>
+    </div>
+  </div>
+
+  <div class="db rv">
+    <div class="dh"><div class="dt">Gauge meters for performance — not tables or bar charts</div><div class="dtag">Visual Architecture</div></div>
+    <div class="dbody">
+      <p>The old dashboard showed performance as four raw numbers. I evaluated three replacement patterns before choosing gauge meters.</p>
+      <div class="pcr">
+        <div class="pc pro"><h5>Why gauges won</h5><ul><li>Percentage completion maps to a dial — "how trained is my staff?" is a natural mental model</li><li>Three gauges side by side (Licence / Course / Staff) enable instant cross-comparison</li><li>Colour zones communicate urgency without requiring number comprehension</li><li>Differentiates EOT visually from all three competitors studied</li></ul></div>
+        <div class="pc con"><h5>Tradeoff managed</h5><ul><li>Colour-only gauges fail for colour-blind users — mitigated by keeping numeric % always visible at centre</li><li>Both primary blues tested: #0068B3 at 5.78:1 and #2D55FF at 5.44:1 — both pass WCAG AA</li><li>Slightly higher dev complexity — scoped and agreed with engineering upfront</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="db rv">
+    <div class="dh"><div class="dt">WhatsApp reminders — not email for time-sensitive training alerts</div><div class="dtag">Notification Strategy</div></div>
+    <div class="dbody">
+      <p>The old platform had no notification system. For training deadline reminders — camp training has hard seasonal deadlines — we evaluated email versus WhatsApp Business API.</p>
+      <div class="pcr">
+        <div class="pc pro"><h5>Why WhatsApp for camp staff</h5><ul><li>Open rates: WhatsApp ~90%+ vs email ~20–30% — for hard training deadlines this gap is critical</li><li>18–25 year old seasonal staff check WhatsApp far more than work email</li><li>Removes the director's need to manually chase staff — the most complained-about task in interviews</li></ul></div>
+        <div class="pc con"><h5>Real cost acknowledged</h5><ul><li>WhatsApp Business API costs $0.004–$0.045 per message by region — ongoing operational cost</li><li>Clients may see this as an unexpected add-on beyond platform subscription</li></ul></div>
+      </div>
+      <div class="mit"><h5>Tiered rollout strategy</h5><p>Email remains the free default. WhatsApp positioned as a premium upgrade bundled into higher subscription tiers. Free 24-hour customer service window leveraged for the most common reminder scenarios to reduce per-message charges.</p></div>
+    </div>
+  </div>
+
+  <div class="db rv">
+    <div class="dh"><div class="dt">Light + Dark mode — a scope decision that needed a business case</div><div class="dtag">Scope Decision</div></div>
+    <div class="dbody">
+      <p>Dual themes double QA surface and design maintenance. I chose to include both and made the case to stakeholders.</p>
+      <div class="pcr">
+        <div class="pc pro"><h5>The case I made</h5><ul><li>Camp staff use the platform in low-light conditions — evening briefings, outdoor check-ins after dark</li><li>Dark mode is a 2024 baseline expectation for B2B SaaS — its absence signals legacy product</li><li>CSS variable architecture means near-zero maintenance cost once built correctly</li><li>None of three competitors offered it — a visible differentiator in sales demos</li></ul></div>
+        <div class="pc con"><h5>Acknowledged upfront</h5><ul><li>Doubles the visual QA pass required from the development team</li><li>All illustrations required testing on both backgrounds</li><li>Scoped as V1 feature — real upfront effort, not a future add-on</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: REAL IMPACT -->
+<div id="impact" class="sec">
+  <div class="seceye"><span class="en">07 /</span> Real-World Impact — What Actually Happened</div>
+  <h2>What happened after launch. With honest sourcing.</h2>
+  <p style="max-width:620px;margin-bottom:36px;">These are confirmed post-launch outcomes validated by the Product Manager (Josh Gadad) and Development Manager (David Price) in a stakeholder review session I personally attended and initiated.</p>
+
+  <div class="supcard rv">
+    <div class="supstat"><div class="supnum before">7</div><label>Support staff before</label></div>
+    <div class="suparrow">→</div>
+    <div class="supstat"><div class="supnum after">2</div><label>Support staff after</label></div>
+    <div class="supdesc">The redesigned interface combined with the V1 Stats Assistant chatbot dramatically reduced inbound support volume. The most common support call type — "I can't find who completed what" and "I don't know where to look" — was eliminated by the unified dashboard and the chatbot. The support team was reduced from 7 members to 2. This is a direct, measurable reduction in operational cost tied to specific design decisions. Not a projected improvement — a confirmed operational fact.</div>
+  </div>
+
+  <!-- STAKEHOLDER MEETING -->
+  <div class="meetcard rv">
+    <img src="/mnt/user-data/uploads/Meetinf_Dev_manager_and_Product_mnager_and_review_the_UXnimpact_.png" alt="Stakeholder review session with Josh Gadad and David Price" class="meetimg">
+    <div class="meetcont">
+      <div class="meeteye">Post-Launch Stakeholder Review</div>
+      <h3>The session where the impact was confirmed</h3>
+      <p>After launch, I convened a review session with Josh Gadad (Product Manager) and David Price (Development Manager) to evaluate real-world platform performance. This is where the support team reduction was confirmed — not estimated, not projected, but reported as an operational reality.</p>
+      <p>I initiated this meeting. I didn't wait to be told the results — I organised the session, brought the questions, and documented what I heard. That distinction matters: a senior designer owns the outcome, not just the deliverable.</p>
+      <p style="margin-top:16px;font-family:var(--mono);font-size:10px;color:var(--ink-60);">Participants: Sainudheen Kaderi (UX Lead) · Josh Gadad (Product Manager) · David Price (Dev Manager)</p>
+    </div>
+  </div>
+
+  <!-- CLIENT USE CASE -->
+  <div style="margin-top:24px;background:var(--white);border:1px solid var(--ink-20);border-radius:var(--r);padding:30px;" class="rv">
+    <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;display:flex;align-items:center;gap:10px;"><span style="width:16px;height:1px;background:var(--blue);flex-shrink:0;"></span>Real Client Use Case</div>
+    <h3>The redesign became a marketing asset</h3>
+    <p>EOT used side-by-side screenshots of the old and new dashboard in an active email marketing campaign — targeting both new prospects and former subscribers who had not renewed in recent years. The visual transformation was so clear that it became a direct sales tool. When a client uses your design work in their go-to-market materials, it means the difference is visible and compelling enough to drive commercial decisions.</p>
+    <p>The campaign aimed to re-engage lapsed clients and attract new ones by demonstrating that the platform had fundamentally changed. The redesigned dashboard was the centrepiece of that story.</p>
+  </div>
+
+  <!-- MIGRATION STORY -->
+  <div style="margin-top:28px;" class="rv">
+    <h3 style="margin-bottom:6px;">The 6-month migration — not all smooth</h3>
+    <p style="max-width:620px;margin-bottom:24px;">Not every outcome was immediate or easy. The honest version of this story includes the hard part.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+      <div style="background:var(--white);border:1px solid var(--ink-20);border-radius:var(--r);padding:22px;"><div style="font-family:var(--serif);font-size:36px;color:var(--blue);font-style:italic;margin-bottom:8px;">6 mo.</div><h4 style="font-size:14px;font-weight:600;margin-bottom:8px;">To full migration</h4><p style="font-size:13px;">Many users were initially hesitant. They knew where everything was in the old platform — even if badly organised. Change itself created friction, not just design differences.</p></div>
+      <div style="background:var(--white);border:1px solid var(--ink-20);border-radius:var(--r);padding:22px;"><div style="font-family:var(--serif);font-size:36px;color:var(--amber);font-style:italic;margin-bottom:8px;">↑</div><h4 style="font-size:14px;font-weight:600;margin-bottom:8px;">Support calls initially spiked</h4><p style="font-size:13px;">Immediately post-launch, volume temporarily increased as users adapted. This is normal for significant UI change — but it required a response. That response was the chatbot.</p></div>
+      <div style="background:var(--white);border:1px solid var(--ink-20);border-radius:var(--r);padding:22px;"><div style="font-family:var(--serif);font-size:36px;color:var(--green);font-style:italic;margin-bottom:8px;">✓</div><h4 style="font-size:14px;font-weight:600;margin-bottom:8px;">Videos + chatbot resolved it</h4><p style="font-size:13px;">Learning videos for key workflows combined with the V1 chatbot gave users two self-service paths. The 7→2 support reduction followed as users became self-sufficient.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 8: OUTCOMES -->
+<div id="outcome" class="sec">
+  <div class="seceye"><span class="en">08 /</span> Measured Outcomes</div>
+  <h2>All numbers, honestly sourced.</h2>
+  <p style="max-width:620px;margin-bottom:36px;">Some metrics are confirmed post-launch facts. Others come from usability testing or click-path analysis. Each one is labelled so it can be verified. No naked percentages.</p>
+  <div class="og">
+    <div class="oc2 hero rv"><div class="om">7 → 2</div><div class="ol">Support team members — the most significant confirmed business outcome. Direct operational cost reduction tied to redesigned UI + Stats Assistant chatbot.</div><div class="os">✓ Confirmed · PM Josh Gadad · post-launch stakeholder review</div></div>
+    <div class="oc2 rv"><div class="om">100%</div><div class="ol">Client migration rate. All active EOT clients successfully moved to the new platform. Zero permanent drop-offs despite a challenging 6-month transition period.</div><div class="os">✓ Confirmed · full client base · post-migration</div></div>
+    <div class="oc2 rv"><div class="om">48%</div><div class="ol">Faster task completion across 3 core director workflows — check staff status, add staff, assign a course. Measured in prototype usability sessions.</div><div class="os">Source: Prototype task testing · avg 5.1 min → 2.7 min</div></div>
+    <div class="oc2 rv"><div class="om">5 → 1</div><div class="ol">Screens required to answer "where does my staff stand?" — the most common director question from research. Now answered at dashboard login.</div><div class="os">Source: Click-path audit · old platform vs redesigned IA</div></div>
+  </div>
+</div>
+
+<!-- SECTION 9: V2 ROADMAP -->
+<div class="sec">
+  <div class="seceye"><span class="en">09 /</span> V2 Roadmap — Earned by V1 Results</div>
+  <h2>V2 is planned. V1 funded the business case for it.</h2>
+  <p style="max-width:620px;margin-bottom:28px;">The chatbot's success demonstrated clear ROI for AI-assisted support before committing to more expensive capabilities. V2 planning is complete.</p>
+  <div class="v2card rv">
+    <div class="v2eye">V2 Feature Roadmap — Planning Complete</div>
+    <h3>Advanced AI assistance — next phase</h3>
+    <p>V1 proved users want to ask questions in natural language. V2 extends this into a full support and navigation assistant. Advanced features will likely require an AI subscription — justified by the V1 results.</p>
+    <div class="v2feats">
+      <div class="v2f"><div class="v2fi">📸</div><h5>Screenshot-based support</h5><p>Users paste a screenshot of any error or confusion. The AI identifies the issue and provides step-by-step resolution — ChatGPT-style vision assistance.</p></div>
+      <div class="v2f"><div class="v2fi">🧠</div><h5>Conversational navigation</h5><p>Beyond data queries — the V2 assistant navigates users to the right screen, explains features, and guides through complex workflows contextually.</p></div>
+      <div class="v2f"><div class="v2fi">⚙️</div><h5>Configurable dashboard</h5><p>Power users managing 90+ staff can customise their widget layout. Video section swappable for a staff table. Documented as a known V1 gap, designed for V2.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 10: REFLECTION -->
+<div class="sec">
+  <div class="seceye"><span class="en">10 /</span> Reflection</div>
+  <h2>What I'd do differently. What I'd defend.</h2>
+  <p style="max-width:620px;margin-bottom:32px;">This section exists because honest reflection is a signal of seniority — not weakness. A designer who can articulate what they'd do differently is a designer who will make better decisions next time.</p>
+  <div class="rg">
+    <div class="rc change rv"><span class="rl">Would Do Differently</span><h4>Test dashboard hierarchy with actual camp directors before wireframes</h4><p>I validated the IA through stakeholder interviews with EOT's internal team — not end-users. The gauge chart layout, video placement, and widget hierarchy were confident design decisions but untested confidence. Two concept-testing sessions with actual directors at the sketching stage would have de-risked the most consequential visual decisions without slowing the project significantly.</p></div>
+    <div class="rc change rv"><span class="rl">Would Do Differently</span><h4>Model the migration experience, not just the target experience</h4><p>I designed for the optimal new interface without fully mapping the transition experience — how a user who had memorised the old platform would feel encountering an entirely different one. The 6-month migration and temporary support spike were predictable. A phased reveal or opt-in preview period for existing clients could have significantly reduced that friction.</p></div>
+    <div class="rc keep rv"><span class="rl">Would Carry Forward</span><h4>Build the design system before the screens — every time</h4><p>Investing three weeks in the component library, colour system, and grid before opening a single hi-fi frame was the highest ROI decision of the project. It made the freelance collaboration seamless, kept 100+ screens consistent, and gave the development team a single source of truth. Every hour in the system saved three in QA and revision.</p></div>
+    <div class="rc keep rv"><span class="rl">Would Carry Forward</span><h4>Post-launch client engagement is part of the designer's responsibility</h4><p>Attending client meetings after handoff, hearing the migration confusion firsthand, bringing those insights back, and making the case for the V1 chatbot — this is the work that produced the biggest measurable outcome of the project. The support team reduction happened because I stayed involved. A senior designer owns the outcome, not just the deliverable.</p></div>
+  </div>
+</div>
+
+<footer>
+  <div class="fi">
+    <div>
+      <div class="fn">Sainudheen Kaderi</div>
+      <div class="fs">Senior UX / Product Designer · 10+ Years · Open to Sr. UX, Lead & Manager Roles · 2026</div>
+    </div>
+    <div class="fn2">Expert Online Training · B2B LMS Redesign · 2023–2024<br>Confirmed metrics validated by PM Josh Gadad post-launch.<br>Testing metrics sourced from prototype usability sessions.</div>
+  </div>
+</footer>
+
+<script>
+const els=document.querySelectorAll('.rv');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*55);io.unobserve(e.target);}
+  });
+},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
+els.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
