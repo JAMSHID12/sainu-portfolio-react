@@ -41,7 +41,7 @@ export default function About() {
                 </div>
             </div>
             <div class="about-right">
-                <img src={profileImage} alt="Profile photo of Sainu" />
+                <img src={profileImage} alt="Sainu - Web Developer" />
             </div>
         </div>
     );

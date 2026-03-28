@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { testimonial } from '../../data/Data';
 import './Testimonials.css';
 
@@ -12,18 +12,23 @@ export default function Testimonial() {
     const total = testimonial.length;
     const currentUser = testimonial[currentIndex];
 
-    const goNext = () => setCurrentIndex((prev) => (prev + 1) % total);
-    const goPrev = () => setCurrentIndex((prev) => (prev - 1 + total) % total);
+    const goNext = useCallback(() => {
+        setCurrentIndex((prev) => (prev + 1) % total);
+    }, [total]);
 
-    const startAutoSlide = () => {
+    const goPrev = useCallback(() => {
+        setCurrentIndex((prev) => (prev - 1 + total) % total);
+    }, [total]);
+
+    const startAutoSlide = useCallback(() => {
         clearInterval(slideInterval.current);
         slideInterval.current = setInterval(goNext, 5000);
-    };
+    }, [goNext]);
 
     useEffect(() => {
         startAutoSlide();
         return () => clearInterval(slideInterval.current);
-    }, [total]);
+    }, [startAutoSlide]);
 
     const handleTouchStart = (event) => {
         touchStartX.current = event.touches[0].clientX;
@@ -44,7 +49,6 @@ export default function Testimonial() {
 
         startAutoSlide();
     };
-
     return (
         <div>
             <section className="section awards" id="awards">
@@ -58,7 +62,7 @@ export default function Testimonial() {
                     >
                         <div className="col-md-5 col-sm-12 testimonial-section">
                             <div className="testimonial-image">
-                                <img src={currentUser.path} alt={`${currentUser.name} testimonial photo`} />
+                                <img src={currentUser.path} alt={currentUser.name} />
                             </div>
                         </div>
                         <div className="col-md-7 col-sm-12 testimonial-section">
